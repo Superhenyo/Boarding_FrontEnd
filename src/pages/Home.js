@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import UserContext from "../UserContext";
-import { useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import '../CSS/Home.css'
 // import LandingPage from "../components/LandingPage";
 
@@ -8,22 +8,15 @@ import '../CSS/Home.css'
 
 
 function Home() {
-
     const { user } = useContext(UserContext);
-    console.log(user.id)
     useEffect(() => {
-    })
-    const navigate = useNavigate();
-    return (
-        (user.id === null) ?
-            <>
-                {navigate('/login')}
-            </>
-            :
-            <>
+        if (user.id !== null) {
+            <Navigate to="/login" />;
+        }
+    }, [user]);
 
-            </>
-    )
+
+    return null
 }
 export default Home;
 

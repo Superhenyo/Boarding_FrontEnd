@@ -5,7 +5,7 @@ function IndividualIntervalsExample() {
     return (
         <Carousel className='carroselBorder'>
             <Carousel.Item interval={1000}>
-    
+
                 <Carousel.Caption>
                     <h3>First slide label</h3>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>

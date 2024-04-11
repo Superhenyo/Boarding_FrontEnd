@@ -8,7 +8,6 @@ import '../src/CSS/App.css'
 import '../src/CSS/Index.css'
 
 
-
 // import Components
 import WebNavBar from './components/AppNavBar';
 import Home from './pages/Home';
@@ -16,6 +15,7 @@ import Logout from './pages/Logout';
 import Login from './pages/Login';
 import NotFound from './components/NotFound';
 import Register from './pages/Register';
+import Profile from './pages/Profile';
 
 // import Pages
 function App() {
@@ -61,6 +61,7 @@ function App() {
           <Route path='/Register' element={<Register />} />
           <Route path='/logout' element={<Logout />} exact />
           <Route path='login' element={<Login />} exact />
+          <Route path='/profile' element={<Profile />} exact />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>
