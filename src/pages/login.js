@@ -1,16 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import "../CSS/Home.css";
 import UserContext from "../UserContext";
+
+import IndividualIntervalsExample from "../components/BordingHighlights";
+
+
 
 function Login() {
   const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isActive, setIsactive] = useState(false);
+
+
   function Authenticate(e) {
     e.preventDefault();
-
     fetch(`${process.env.REACT_APP_API_URL}/users/userLogin`, {
       method: "POST",
       headers: {
@@ -28,7 +32,6 @@ function Login() {
           retrieveUserDetails(data.access);
         }
       });
-
     setEmail("");
     setPassword("");
   }
@@ -53,12 +56,10 @@ function Login() {
   }, [email, password]);
 
   return (
-    <Container>
-      <Row className="login">
-        <Col className="d-flex justify-content-center align-items-center">
-          <h1 className="text-center">
-            Find A home that is affordable and Good
-          </h1>
+    <Container className="loginBackground">
+      <Row className="loginContainer">
+        <Col className="d-flex flex-column justify-content-center align-items-center">
+          <IndividualIntervalsExample />
         </Col>
         <Col className="d-flex justify-content-center align-items-center">
           <div className="form-container">

@@ -1,18 +1,25 @@
-import React, { useContext } from "react";
-import '../CSS/Home.css'
-import Login from "./login";
+import React, { useContext, useEffect } from "react";
 import UserContext from "../UserContext";
+import { useNavigate } from 'react-router-dom'
 
 
 
 
 function Home() {
+
     const { user } = useContext(UserContext);
+
+
+    useEffect(() => {
+
+    })
+    const navigate = useNavigate();
+
 
     return (
         (user.id === null) ?
             <>
-                <Login/>
+                {navigate('/login')}
             </>
             :
             <>
