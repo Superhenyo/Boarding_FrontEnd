@@ -5,18 +5,17 @@ import { useState, useEffect } from 'react';
 
 // CSS imports
 import '../src/CSS/App.css'
-import '../src/CSS/Home.css'
-import '../src/CSS/Login.css'
 import '../src/CSS/Index.css'
-import '../src/CSS/Navbar.css'
+
 
 
 // import Components
 import WebNavBar from './components/AppNavBar';
 import Home from './pages/Home';
-import Logout from './pages/logout';
-import Login from './pages/login';
+import Logout from './pages/Logout';
+import Login from './pages/Login';
 import NotFound from './components/NotFound';
+import Register from './pages/Register';
 
 // import Pages
 function App() {
@@ -59,6 +58,7 @@ function App() {
         <WebNavBar />
         <Routes>
           <Route path='/' element={<Home />} exact />
+          <Route path='/Register' element={<Register />} />
           <Route path='/logout' element={<Logout />} exact />
           <Route path='login' element={<Login />} exact />
           <Route path='*' element={<NotFound />} />

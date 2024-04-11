@@ -6,12 +6,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Image from 'react-bootstrap/Image';
 import logo from '../images/Logo.png'
-
+import '../CSS/Navbar.css'
 export default function WebNavBar() {
-
     const { user } = useContext(UserContext);
-
-
     return (
         (user.id !== null) ?
             <>
@@ -49,6 +46,7 @@ export default function WebNavBar() {
             </>
             :
             <>
+            
             </>
 
     )

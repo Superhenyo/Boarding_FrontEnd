@@ -13,7 +13,7 @@ export default function Logout() {
             id: null,
             isAdmin: null
         })
-        navigate('/')
+        navigate('/login')
     }
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export default function Logout() {
                 navigate('/')
             }
         })
-    }, [navigate])
+    }, [navigate]);
 
     return null;
 }
