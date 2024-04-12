@@ -1,68 +1,128 @@
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap";
+import "../CSS/LoginRegister.css";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import "../CSS/SignIn.css"
-
-
-import '../CSS/LoginRegister.css'
 
 export default function Register() {
-    const [isLogin, setIsLogin] = useState(false);
+    const navigate = useNavigate();
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [role, setRole] = useState("");
+    const [isActive, setIsActive] = useState(false);
 
-    const toggleLoginMode = () => {
-        setIsLogin(!isLogin);
+    const CreateUser = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/users/registration`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    role,
+                }),
+            });
+            if (response.ok) {
+                Swal.fire('Success', 'Registration successful!', 'success');
+                navigate("/login");
+            } else {
+                Swal.fire('Error', 'Registration failed. Please try again later.', 'error');
+            }
+        } catch (error) {
+            console.error(error);
+            Swal.fire('Error', 'Registration failed. Please try again later.', 'error');
+        }
     };
-
 
     return (
         <Container className="loginBackground">
-            <Row>
-                <Col className="d-flex flex-column justify-content-center align-items-center">
-
-                </Col>
-                <Col>
-                    <form className="form-container">
+            <Row className="loginContainer">
+                <Col className="d-flex flex-column justify-content-center align-items-center"></Col>
+                <Col className="d-flex justify-content-center align-items-center">
+                    <form className="form" onSubmit={CreateUser}>
                         <p className="title">Register </p>
-                        <div className="form">
+                        <div className="flex">
                             <label>
-                                <input required="" placeholder="" type="text" className="input" />
-                                <span>Firstname</span>
+                                <input
+                                    required
+                                    placeholder="Firstname"
+                                    type="text"
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                    className="input"
+                                />
                             </label>
-
                             <label>
-                                <input required="" placeholder="" type="text" className="input" />
-                                <span>Lastname</span>
+                                <input
+                                    required
+                                    placeholder="Lastname"
+                                    type="text"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    className="input"
+                                />
                             </label>
                         </div>
-
                         <label>
-                            <input required="" placeholder="" type="email" className="input" />
-                            <span>Email</span>
+                            <input
+                                required
+                                placeholder="Email"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="input"
+                            />
                         </label>
-
                         <label>
-                            <input required="" placeholder="" type="password" className="input" />
-                            <span>Password</span>
+                            <input
+                                required
+                                placeholder="Password"
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="input"
+                            />
                         </label>
                         <label>
-                            <input required="" placeholder="" type="password" className="input" />
-                            <span>Confirm password</span>
+                            <input
+                                required
+                                placeholder="Confirm Password"
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                className="input"
+                            />
                         </label>
-                        <button className="submit">Submit</button>
-                        <p className="sign-up-label">
-                            Don't have an account?
-                            <span
-                                className="sign-up-link"
-                                onClick={toggleLoginMode}
+                        <label>
+                            <select
+                                required
+                                className="input"
+                                value={role}
+                                onChange={(e) => setRole(e.target.value)}
                             >
-                                Sign up
-                            </span>
+                                <option value="admin">admin</option>
+                                <option value="border">border</option>
+                            </select>
+                        </label>
+
+                        <button className="submit">Submit</button>
+                        <p className="signin">
+                            Already have an account?{" "}
+                            <span className="sign-up-link" onClick={() => navigate("/login")}>
+                                Signin
+                            </span>{" "}
                         </p>
                     </form>
                 </Col>
-
             </Row>
-
         </Container>
-
-    )
+    );
 }

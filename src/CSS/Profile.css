@@ -1,0 +1,9 @@
+.profile-icon {
+  font-size: 450px !important;
+}
+
+.profile-size {
+  max-width: 450px;
+  border-radius: 50%;
+  margin-top: 10px;
+}

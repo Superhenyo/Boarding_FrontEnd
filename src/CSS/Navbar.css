@@ -1,14 +1,18 @@
 /* NavBar */
 .nav-color {
-    background-color: rgba(97, 237, 81, 0.5);
-  }
-  
-  .nav-text-button {
-    margin-left: 50px;
-    margin-right: 50px;
-  }
-  
-  Nav #allButton {
-    margin-left: 850px;
-  }
-  /* NavBar End */
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-text-button {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+Nav #allButton {
+  margin-left: 850px;
+}
+
+.nav-underline {
+  border-bottom: 1px solid wheat;
+}
+/* NavBar End */

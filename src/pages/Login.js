@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import UserContext from "../UserContext";
 import IndividualIntervalsExample from "../components/BordingHighlights";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+
 import Register from "./Register";
 
 import '../CSS/LoginRegister.css'
@@ -13,6 +14,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
+
+  const navigate = useNavigate();
 
   function Authenticate(e) {
     e.preventDefault();
@@ -110,7 +113,7 @@ function Login() {
                       Don't have an account?
                       <span
                         className="sign-up-link"
-                        onClick={toggleRegistrationMode}
+                        onClick={() => navigate("/register")}
                       >
                         Sign up
                       </span>
@@ -172,40 +175,11 @@ function Login() {
                     </div>
                   </div>
                 ) : (
-                  <form className="form">
-                    <p className="title">Register </p>
-                    <div className="flex">
-                      <label>
-                        <input required="" placeholder="Firstname" type="text" className="input" />
-                      </label>
-                      <label>
-                        <input required="" placeholder="Lastname" type="text" className="input" />
-                      </label>
-                    </div>
-                    <label>
-                      <input required="" placeholder="Email" type="email" className="input" />
-                    </label>
-                    <label>
-                      <input required="" placeholder="Password" type="password" className="input" />
-                    </label>
-                    <label>
-                      <input required="" placeholder="Confirm Password" type="password" className="input" />
-                    </label>
-                    <label>
-                      <select required="" className="input">
-                        <option value="owner">House Owner</option>
-                        <option value="boarder">Boarder</option>
-                      </select>
-                    </label>
-
-                    <button className="submit">Submit</button>
-                    <p className="signin">Already have an acount ? <span onClick={toggleRegistrationMode}>Signin</span> </p>
-                  </form>
+                  <Register isRegistering={toggleRegistrationMode} />
                 )}
               </Col>
             </Row>
           </Container>
-
         </>
       )}
     </>

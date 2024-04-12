@@ -12,7 +12,7 @@ export default function WebNavBar() {
     return (
         (user.id !== null) ?
             <>
-                <Container fluid className="m-0 p-0">
+                <Container fluid className="nav-underline m-0 p-0">
                     <Navbar className="nav-color" expand="lg">
                         <Container fluid>
                             <Navbar.Brand as={NavLink} to="#" className="ms-5">
